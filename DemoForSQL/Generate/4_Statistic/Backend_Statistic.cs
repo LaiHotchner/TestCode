@@ -1,7 +1,8 @@
-﻿using CodeSqlGenerate.Generate._4_Wait_Statistic.Backend;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._4_Statistic.Backend;
 using System.Collections.Generic;
 
-namespace CodeSqlGenerate.Generate.JavaCode._4_Statistic
+namespace CodeSqlGenerate.Generate._4_Statistic
 {
     public class Backend_Statistic
     {

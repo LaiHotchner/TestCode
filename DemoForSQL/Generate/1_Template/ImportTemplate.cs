@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Utility
+namespace CodeSqlGenerate.Generate._1_Template
 {
     public static class ImportTemplate
     {
-        public static readonly string DesktopOutputPath = @"C:\Users\Hotch\Desktop\Template\";
-        public static readonly string PostmanOutputPath = @"C:\Users\Hotch\Postman\files\Upload\";
+        private static readonly string DesktopOutputPath = @"C:\Users\Hotch\Desktop\Template\";
+        private static readonly string PostmanOutputPath = @"C:\Users\Hotch\Postman\files\Upload\";
 
         // 元素数据类型和C#数据类型映射字典
         public static Dictionary<string, string> RowTypeCSharpDict = new Dictionary<string, string>();
@@ -143,36 +144,16 @@ namespace CodeSqlGenerate.Utility
 
         public static void GenerateTemplate(List<HotchnerTable> tableList)
         {
-            Console.WriteLine();
-            Console.WriteLine("Start Generate Template");
-            DeleteExistFile(DesktopOutputPath);
-            DeleteExistFile(PostmanOutputPath);
+            CommonMethod.ClearFolderIfExistFiles(DesktopOutputPath);
+            CommonMethod.ClearFolderIfExistFiles(PostmanOutputPath);
 
             foreach (var table in tableList)
             {
                 var templateContent = GenerateTemplateContent(table);
                 SaveTemplateToCsv(templateContent, table);
             }
-            Console.WriteLine("Finish Generate Template");
         }
 
-        private static void DeleteExistFile(string folder)
-        {
-            string[] files = Directory.GetFiles(folder);
-            foreach (var file in files)
-            {
-                File.Delete(file);
-            }
-        }
-        private static void SaveTemplateToCsv(string templateContent, HotchnerTable table)
-        {
-            var templateFileName = CommonMethod.GetTemplateName(table);
-            var filePath = $"{DesktopOutputPath}{templateFileName}";
-            var postmanPath = $"{PostmanOutputPath}{templateFileName}";
-           
-            File.WriteAllText(filePath, templateContent, Encoding.UTF8);
-            File.WriteAllText(postmanPath, templateContent, Encoding.UTF8);
-        }
         private static string GenerateTemplateContent(HotchnerTable table)
         {
             StringBuilder templateBuilder = new StringBuilder();
@@ -244,7 +225,15 @@ namespace CodeSqlGenerate.Utility
             var templateContent = templateBuilder.ToString();
             return templateContent;
         }
+        private static void SaveTemplateToCsv(string templateContent, HotchnerTable table)
+        {
+            var templateFileName = CommonMethod.GetTemplateName(table);
+            var filePath = $"{DesktopOutputPath}{templateFileName}";
+            var postmanPath = $"{PostmanOutputPath}{templateFileName}";
 
+            File.WriteAllText(filePath, templateContent, Encoding.UTF8);
+            File.WriteAllText(postmanPath, templateContent, Encoding.UTF8);
+        }
 
         private static bool GenerateAdminCode(Random random, StringBuilder rowBuilder, HotchnerRow row)
         {
@@ -265,7 +254,7 @@ namespace CodeSqlGenerate.Utility
         {
             if (row.Name.ToLower() == "x")
             {
-                double longitude = 120.1 + (random.Next(0, 10000) / 100000.0);
+                double longitude = 120.1 + random.Next(0, 10000) / 100000.0;
                 rowBuilder.Append(longitude.ToString() + ",");
                 return true;
             }
@@ -275,7 +264,7 @@ namespace CodeSqlGenerate.Utility
         {
             if (row.Name.ToLower() == "y")
             {
-                double latitude = 30.2 + (random.Next(0, 10000) / 100000.0);
+                double latitude = 30.2 + random.Next(0, 10000) / 100000.0;
                 rowBuilder.Append(latitude.ToString() + ",");
                 return true;
             }

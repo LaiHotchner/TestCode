@@ -1,4 +1,4 @@
-﻿using CodeSqlGenerate.Utility;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -18,7 +18,7 @@ namespace CodeSqlGenerate.Generate._3_Retrieval
 
         private static void Generate_RetrievalDetail_TsContent(List<HotchnerTable> tableList)
         {
-            var detailFolder = Frontend_Code.AngularCodeOutputPath;
+            var detailFolder = Frontend_Code.FrontendOutputPath;
             if (Program.IsOutputToProject)
             {
                 detailFolder = @"C:\0_Workspace\ict\src\app\ict\content-modules\statistical-analysis\equip-table\";

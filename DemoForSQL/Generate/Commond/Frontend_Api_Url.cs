@@ -1,20 +1,18 @@
-﻿using CodeSqlGenerate.Generate._3_Retrieval;
-using CodeSqlGenerate.Generate._5_AnchorGroup;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._2_DeviceManagement;
+using CodeSqlGenerate.Generate._3_Retrieval;
 using CodeSqlGenerate.Generate._5_Anchors;
-using CodeSqlGenerate.Generate.Curd;
-using CodeSqlGenerate.Generate.JavaCode;
-using CodeSqlGenerate.Utility;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.Angular
+namespace CodeSqlGenerate.Generate.Commond
 {
     public static class Frontend_Api_Url
     {
         public static void GenerateCode(List<HotchnerTable> tableList)
         {
-            var apiFolder = Frontend_Code.AngularCodeOutputPath;
+            var apiFolder = Frontend_Code.FrontendOutputPath;
             if (Program.IsOutputToProject)
             {
                 apiFolder = @"C:\0_Workspace\ict\src\app\common\";

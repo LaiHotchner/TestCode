@@ -1,9 +1,9 @@
-﻿using CodeSqlGenerate.Generate._3_Retrieval.Backend;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode._3_Retrieval
+namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 {
     internal class Mapper
     {

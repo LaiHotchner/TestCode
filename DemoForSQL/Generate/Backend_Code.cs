@@ -1,23 +1,21 @@
-﻿using CodeSqlGenerate.Utility;
-
-namespace CodeSqlGenerate.Generate
+﻿namespace CodeSqlGenerate.Generate
 {
     public static class Backend_Code
     {
+        public static readonly string BackendOutputPath = Program.OutputPath + "JavaCode\\";
+
         public static readonly string EntityPath = "entity\\";
         public static readonly string DaoPath = "dao\\";
         public static readonly string MapperPath = "mappers\\";
         public static readonly string ControllerPath = "controller\\";
-        public static readonly string ServiceImplPath = "service\\impl\\";
+        public static readonly string ServiceImplPath = "serviceimpl\\";
         public static readonly string ServiceInterfacePath = "service\\";
 
         public static readonly string BaseEntityPackagePrefix = "com.infinite.icts.entity";
         public static readonly string BaseDaoPackagePrefix = "com.infinite.icts.dao";
         public static readonly string BaseControllerPackagePrefix = "com.infinite.icts.controller";
-        public static readonly string BaseServiceImplPackagePrefix = "com.infinite.icts.service.impl";
+        public static readonly string BaseServiceImplPackagePrefix = "com.infinite.icts.serviceimpl";
         public static readonly string BaseServiceInterfacePackagePrefix = "com.infinite.icts.service";
-
-        public static readonly string JavaCodeOutputPath = @"C:\0_Infinite\ICTS\2_Generated\JavaCode\";
 
         public static void PreProcessFolder(string folderPrefix,
             out string entityFolderPath,
@@ -27,12 +25,12 @@ namespace CodeSqlGenerate.Generate
             out string serviceImplFolderPaht,
             out string serviceInterfaceFolderPath)
         {
-            entityFolderPath = JavaCodeOutputPath + EntityPath + folderPrefix;
-            daoFolderPath = JavaCodeOutputPath + DaoPath + folderPrefix;
-            mapperFolderPath = JavaCodeOutputPath + MapperPath + folderPrefix;
-            controllerFodlerPath = JavaCodeOutputPath + ControllerPath + folderPrefix;
-            serviceImplFolderPaht = JavaCodeOutputPath + ServiceImplPath + folderPrefix;
-            serviceInterfaceFolderPath = JavaCodeOutputPath + ServiceInterfacePath + folderPrefix;
+            entityFolderPath = BackendOutputPath + EntityPath + folderPrefix;
+            daoFolderPath = BackendOutputPath + DaoPath + folderPrefix;
+            mapperFolderPath = BackendOutputPath + MapperPath + folderPrefix;
+            controllerFodlerPath = BackendOutputPath + ControllerPath + folderPrefix;
+            serviceImplFolderPaht = BackendOutputPath + ServiceImplPath + folderPrefix;
+            serviceInterfaceFolderPath = BackendOutputPath + ServiceInterfacePath + folderPrefix;
 
             if (Program.IsOutputToProject)
             {

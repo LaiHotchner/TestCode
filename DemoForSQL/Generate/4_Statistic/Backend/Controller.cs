@@ -1,9 +1,9 @@
-﻿using CodeSqlGenerate.Generate.JavaCode._4_Statistic;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate._4_Wait_Statistic.Backend
+namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 {
     public static class Controller
     {

@@ -1,9 +1,10 @@
-﻿using CodeSqlGenerate.Generate._3_Retrieval.Backend;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._3_Retrieval;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode._3_Retrieval
+namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 {
     internal class ServiceImpl
     {
@@ -32,7 +33,7 @@ namespace CodeSqlGenerate.Generate.JavaCode._3_Retrieval
             stringBuilder.AppendLine("import java.util.List;");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("@Service");
-            stringBuilder.AppendLine($"public class {Backend_Retrieval.ServicesImplName} implements {Backend_Retrieval.ServicesName} "+ "{");
+            stringBuilder.AppendLine($"public class {Backend_Retrieval.ServicesImplName} implements {Backend_Retrieval.ServicesName} " + "{");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("    @Autowired");
             stringBuilder.AppendLine($"    private {Backend_Retrieval.DaoName} {daoField};");

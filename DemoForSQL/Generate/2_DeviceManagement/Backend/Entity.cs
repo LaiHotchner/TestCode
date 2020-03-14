@@ -1,9 +1,9 @@
-﻿using CodeSqlGenerate.Utility;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode.Curd
+namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
 {
     internal class Entity
     {
@@ -78,7 +78,7 @@ namespace CodeSqlGenerate.Generate.JavaCode.Curd
             {
                 var entityName = Backend_DeviceManagement.GetEntityName(table);
                 StringBuilder entityBuilder = new StringBuilder();
-                entityBuilder.AppendLine("package "+ Backend_DeviceManagement.EntityPackagePrefix + ";");
+                entityBuilder.AppendLine("package " + Backend_DeviceManagement.EntityPackagePrefix + ";");
                 entityBuilder.AppendLine("");
                 entityBuilder.AppendLine("import java.sql.Timestamp;");
                 entityBuilder.AppendLine("import java.util.Date;");

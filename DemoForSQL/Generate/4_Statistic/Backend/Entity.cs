@@ -1,10 +1,8 @@
-﻿using CodeSqlGenerate.Generate.JavaCode._4_Statistic;
-using CodeSqlGenerate.Utility;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate._4_Wait_Statistic.Backend
+namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 {
     public static class Entity
     {

@@ -1,16 +1,16 @@
-﻿using CodeSqlGenerate.Generate.JavaCode.Curd;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._2_DeviceManagement.Backend;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode
+namespace CodeSqlGenerate.Generate._2_DeviceManagement
 {
     public static class Backend_DeviceManagement
     {
-        #region 这两个值要一致，保证package路径和文件夹路径一致
+        // 这两个值要一致，保证package路径和文件夹路径一致
         public static readonly string deviceFolder = "devices\\";
         public static readonly string devicePackage = ".devices";
-        #endregion
 
         internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + devicePackage;
         internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + devicePackage;

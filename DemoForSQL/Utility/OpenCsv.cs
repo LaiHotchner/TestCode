@@ -2,8 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Linq;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate
+namespace CodeSqlGenerate.Generate
 {
     public static class OpenCsv
     {
@@ -17,6 +18,9 @@ namespace CodeSqlGenerate
             string strLine;
             var table = new HotchnerTable();
             var rowList = new List<HotchnerRow>();
+            // 前两行是描述字段
+            sr.ReadLine();
+            sr.ReadLine();
             while ((strLine = sr.ReadLine()) != null)
             {
                 string[] aryLine = strLine.Split(',');
@@ -80,12 +84,6 @@ namespace CodeSqlGenerate
                            select obj;
 
             return listSort.ToList();
-
-            var tableList = new List<HotchnerTable>();
-            tableList.Add(listSort.FirstOrDefault());
-            return tableList;
         }
-
-
     }
 }

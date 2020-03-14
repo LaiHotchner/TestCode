@@ -1,13 +1,12 @@
-﻿using CodeSqlGenerate.Generate;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate;
+using CodeSqlGenerate.Generate._0_sql;
+using CodeSqlGenerate.Generate._1_Template;
+using CodeSqlGenerate.Generate._2_DeviceManagement;
 using CodeSqlGenerate.Generate._3_Retrieval;
-using CodeSqlGenerate.Generate._5_AnchorGroup;
+using CodeSqlGenerate.Generate._4_Statistic;
 using CodeSqlGenerate.Generate._5_Anchors;
-using CodeSqlGenerate.Generate.Angular;
-using CodeSqlGenerate.Generate.Curd;
-using CodeSqlGenerate.Generate.JavaCode;
-using CodeSqlGenerate.Generate.JavaCode._4_Statistic;
-using CodeSqlGenerate.Utility;
-using System;
+using CodeSqlGenerate.Generate.Commond;
 using System.Collections.Generic;
 using System.IO;
 
@@ -15,24 +14,21 @@ namespace CodeSqlGenerate
 {
     public class Program
     {
-        public static readonly string DataSourcePath = @"C:\0_Infinite\ICTS\0_Data_Source\InputFile";
         public static bool IsOutputToProject = true;
+        public static readonly string SourcePath = @"C:\0_Infinite\ICTS\0_Input\";
+        public static readonly string OutputPath = @"C:\0_Infinite\ICTS\2_Output\";
 
-        // 设备管理详情页面中，显示的字段数量
-        // 检索结果详情页面中，显示的字段数量
+        // 设备管理详情页面中和检索结果详情页面中，显示的字段数量
         public static readonly int DetailViewColumnCount = 11;
 
         static void Main(string[] args)
         {
-            var allTableList = new List<HotchnerTable>();
+            PreproccessFolder();
 
-            DirectoryInfo folder = new DirectoryInfo(DataSourcePath);
+            var allTableList = ReadAllTables();
 
-            foreach (FileInfo file in folder.GetFiles("*.csv"))
-            {
-                var tableList = OpenCsv.OpenCSV(file.FullName);
-                allTableList.AddRange(tableList);
-            }
+            SqlScript.GenerateSqlScript("CreateDeviceSql", allTableList);
+            ImportTemplate.GenerateTemplate(allTableList);
 
             Backend_DeviceManagement.GenerateCode(allTableList);
             Frontend_DeviceManagement.GenerateCode(allTableList);
@@ -44,12 +40,27 @@ namespace CodeSqlGenerate
             Frontend_Anchors.GenerateCode(allTableList);
 
             Backend_Statistic.GenerateCode(allTableList);
+            Frontend_Statistic.GenerateCode(allTableList);
 
             Frontend_Api_Url.GenerateCode(allTableList);
-            ImportTemplate.GenerateTemplate(allTableList);
-            SqlScript.GenerateSqlScript("Device", allTableList);
+        }
 
-            Console.ReadLine();
+        private static List<HotchnerTable> ReadAllTables()
+        {
+            var allTableList = new List<HotchnerTable>();
+            var folder = new DirectoryInfo(SourcePath);
+            foreach (FileInfo file in folder.GetFiles("*.csv"))
+            {
+                var tableList = OpenCsv.OpenCSV(file.FullName);
+                allTableList.AddRange(tableList);
+            }
+            return allTableList;
+        }
+
+        private static void PreproccessFolder()
+        {
+            CommonMethod.CreateDirectoryIfNotExist(OutputPath);
+            CommonMethod.ClearFolderIfExistFiles(OutputPath);
         }
     }
 }

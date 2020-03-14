@@ -1,10 +1,10 @@
-﻿using CodeSqlGenerate.Generate.JavaCode;
-using CodeSqlGenerate.Generate.JavaCode._4_Statistic;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._2_DeviceManagement;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate._4_Wait_Statistic.Backend
+namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 {
     public static class ServiceImpl
     {

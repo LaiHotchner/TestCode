@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using CodeSqlGenerate.Generate._5_AnchorGroup;
+using CodeSqlGenerate.Data;
 
 namespace CodeSqlGenerate.Generate._5_Anchors.Backend
 {
@@ -42,7 +42,6 @@ namespace CodeSqlGenerate.Generate._5_Anchors.Backend
             stringBuilder.AppendLine("    @Autowired");
             stringBuilder.AppendLine($"    private {Backend_Anchors.ServicesName} {filedName};");
             stringBuilder.AppendLine();
-
             stringBuilder.AppendLine($"    @RequestMapping(value = \"/{Backend_Anchors.GetAnchorsByDeviceType_MethodName}\", method = RequestMethod.POST)");
             stringBuilder.AppendLine($"    public ResponseBase {Backend_Anchors.GetAnchorsByDeviceType_MethodName}(@RequestBody String params) " + "{");
             stringBuilder.AppendLine("        try {");

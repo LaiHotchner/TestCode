@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using CodeSqlGenerate.Data;
+using System.IO;
 
-namespace CodeSqlGenerate.Utility
+namespace CodeSqlGenerate.Generate
 {
     public static class CommonMethod
     {
@@ -8,6 +9,7 @@ namespace CodeSqlGenerate.Utility
         {
             return source.Substring(0, 1).ToUpper() + source.Substring(1).ToLower();
         }
+
         public static string GetFirstUpString(string source)
         {
             return source.Substring(0, 1).ToUpper() + source.Substring(1);
@@ -18,8 +20,6 @@ namespace CodeSqlGenerate.Utility
             return $"{table.Label}.csv";
             //return $"{table.PascalMethodName}_{table.TableDescription}.csv";
         }
-
-
 
         public static void CreateDirectoryIfNotExist(string folder)
         {

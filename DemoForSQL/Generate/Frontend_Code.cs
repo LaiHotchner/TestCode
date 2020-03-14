@@ -1,9 +1,8 @@
-﻿namespace CodeSqlGenerate.Utility
+﻿namespace CodeSqlGenerate.Generate
 {
     public static class Frontend_Code
     {
-        public static readonly string AngularCodeOutputPath = @"C:\0_Infinite\ICTS\2_Generated\AngularCode\";
-
+        public static readonly string FrontendOutputPath = Program.OutputPath + "AngularCode\\";
 
 
     }

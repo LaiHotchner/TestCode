@@ -1,17 +1,16 @@
-﻿using CodeSqlGenerate.Generate._5_Anchors.Backend;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._5_Anchors.Backend;
 using System.Collections.Generic;
 
-namespace CodeSqlGenerate.Generate._5_AnchorGroup
+namespace CodeSqlGenerate.Generate._5_Anchors
 {
     public static class Backend_Anchors
     {
-
         public static readonly string FieldPrefix = "anchors";
 
-        #region 这两个值要一致，保证package路径和文件夹路径一致
+        // 这两个值要一致，保证package路径和文件夹路径一致
         public static readonly string archorsFolder = "anchors\\";
         public static readonly string archorsPackage = ".anchors";
-        #endregion
 
         internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + archorsPackage;
         internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + archorsPackage;

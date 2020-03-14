@@ -1,6 +1,7 @@
-﻿using System.Text;
+﻿using CodeSqlGenerate.Data;
+using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode.Curd
+namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
 {
     internal class ServiceInterface
     {

@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\HotchnerResult.cs" />
+    <Compile Include="Data\HotchnerRow.cs" />
+    <Compile Include="Data\HotchnerTable.cs" />
     <Compile Include="Generate\3_Retrieval\Backend\Entity.cs" />
     <Compile Include="Generate\3_Retrieval\Frontend_Retrieval.cs" />
     <Compile Include="Generate\4_Statistic\Backend\Controller.cs" />
@@ -85,6 +87,9 @@
     <Compile Include="Generate\1_Template\ImportTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>

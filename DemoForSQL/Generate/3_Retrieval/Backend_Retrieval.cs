@@ -1,8 +1,8 @@
-﻿using CodeSqlGenerate.Generate._3_Retrieval.Backend;
-using CodeSqlGenerate.Generate.JavaCode._3_Retrieval;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._3_Retrieval.Backend;
 using System.Collections.Generic;
 
-namespace CodeSqlGenerate.Generate
+namespace CodeSqlGenerate.Generate._3_Retrieval
 {
     public static class Backend_Retrieval
     {

@@ -1,9 +1,9 @@
-﻿using CodeSqlGenerate.Utility;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.Curd
+namespace CodeSqlGenerate.Generate._2_DeviceManagement
 {
     public static class Frontend_DeviceManagement
     {
@@ -74,7 +74,7 @@ namespace CodeSqlGenerate.Generate.Curd
             foreach (var table in tableList)
             {
                 var folderName = AngularFolderDictionary[table.PascalMethodName];
-                var folder = Frontend_Code.AngularCodeOutputPath + folderName;
+                var folder = Frontend_Code.FrontendOutputPath + folderName;
                 CommonMethod.CreateDirectoryIfNotExist(folder);
                 if (Program.IsOutputToProject)
                 {

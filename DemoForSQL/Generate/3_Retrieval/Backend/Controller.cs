@@ -1,9 +1,11 @@
-﻿using CodeSqlGenerate.Generate._3_Retrieval.Backend;
+﻿using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._2_DeviceManagement;
+using CodeSqlGenerate.Generate._3_Retrieval;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate.Generate.JavaCode._3_Retrieval
+namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 {
     internal class Controller
     {

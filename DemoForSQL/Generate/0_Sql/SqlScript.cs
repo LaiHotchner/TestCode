@@ -1,16 +1,13 @@
-﻿using CodeSqlGenerate.Utility;
-using System;
+﻿using CodeSqlGenerate.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CodeSqlGenerate
+namespace CodeSqlGenerate.Generate._0_sql
 {
     public static class SqlScript
     {
-        public static readonly string SqlScriptOutputPath = @"C:\0_Infinite\ICTS\2_Generated\SqlScript\";
-
-        public static Dictionary<string, string> RowTypeSqlDict = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> RowTypeSqlDict = new Dictionary<string, string>();
         static SqlScript()
         {
             RowTypeSqlDict.Add("bigint", "bigint");
@@ -74,21 +71,14 @@ namespace CodeSqlGenerate
             RowTypeSqlDict.Add("VARCHAR2(80)", "character varying(80)");
         }
 
-        public static void GenerateSqlScript(string createTypeName, List<HotchnerTable> tableList)
+        public static void GenerateSqlScript(string fileName, List<HotchnerTable> tableList)
         {
-            Console.WriteLine();
-            Console.WriteLine("Start create Sql script");
-            string fileFullPath = $"{SqlScriptOutputPath}Create{createTypeName}SqlScript.sql";
-            CommonMethod.CreateDirectoryIfNotExist(SqlScriptOutputPath);
-            CommonMethod.ClearFolderIfExistFiles(SqlScriptOutputPath);
+            string fileFullPath = $"{Program.OutputPath}{fileName}.sql";
+           
 
             AddScriptDescription(fileFullPath, tableList);
-
             GenerateEachTable(fileFullPath, tableList);
-
-            Console.WriteLine("Finished create Sql script");
         }
-
 
         private static void AddScriptDescription(string fileFullPath, List<HotchnerTable> tableList)
         {
@@ -102,7 +92,6 @@ namespace CodeSqlGenerate
             var description = builder.ToString();
             File.AppendAllText(fileFullPath, description, Encoding.UTF8);
         }
-
         private static void GenerateEachTable(string fileFullPath, List<HotchnerTable> tableList)
         {
             foreach (var table in tableList)
@@ -111,7 +100,6 @@ namespace CodeSqlGenerate
                 File.AppendAllText(fileFullPath, sqlContent, Encoding.UTF8);
             }
         }
-
         private static string GetSqlContentByTable(HotchnerTable table)
         {
             StringBuilder sqlContentBuilder = new StringBuilder();
@@ -150,7 +138,6 @@ namespace CodeSqlGenerate
             }
             // 逻辑删除标记
             sqlContentBuilder.AppendLine("    available integer DEFAULT 1,");
-
 
             if (table.DbTableName == "jj_aj_001")
             {
