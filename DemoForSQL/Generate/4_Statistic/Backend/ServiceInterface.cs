@@ -25,6 +25,10 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine($"public interface {Backend_Statistic.ServicesName} " + "{");
             stringBuilder.AppendLine($"    {Entity.StatisticSummaryClass} {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode);");
             stringBuilder.AppendLine("}");
+
+
+
+
             return stringBuilder.ToString();
         }
 

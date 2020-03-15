@@ -52,6 +52,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
                 entityBuilder.AppendLine($"    public void set{propertyName}({item.Value} value) " + "{");
                 entityBuilder.AppendLine($"        this.{item.Key} = value;");
                 entityBuilder.AppendLine("    }");
+                entityBuilder.AppendLine("");
             }
 
             entityBuilder.AppendLine("}");

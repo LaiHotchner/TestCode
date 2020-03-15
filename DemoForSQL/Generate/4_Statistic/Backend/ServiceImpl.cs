@@ -34,7 +34,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             AngularFolderDictionary.Add("EvacuationRoute", "security\\evacuation-route\\");
             AngularFolderDictionary.Add("PowerComm", "security\\power-comm\\");
             AngularFolderDictionary.Add("ProtectiveFence", "security\\protective-fence\\");
-            AngularFolderDictionary.Add("SecurityEquipment", "security\\security-equipment\\");
+            AngularFolderDictionary.Add("SecurityDevice", "security\\security-device\\");
             AngularFolderDictionary.Add("VideoSurveillance", "security\\video-surveillance\\");
         }
 

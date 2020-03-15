@@ -44,5 +44,8 @@ namespace CodeSqlGenerate.Generate._4_Statistic
 
         // Restful_Api_Name
         public static string GetAllStatisticResult_MethodName = $"getAll{NamePrefix}Result";
+
+
+
     }
 }

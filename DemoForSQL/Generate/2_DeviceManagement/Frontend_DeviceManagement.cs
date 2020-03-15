@@ -65,7 +65,7 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement
             AngularFolderDictionary.Add("EvacuationRoute", "security\\evacuation-route\\");
             AngularFolderDictionary.Add("PowerComm", "security\\power-comm\\");
             AngularFolderDictionary.Add("ProtectiveFence", "security\\protective-fence\\");
-            AngularFolderDictionary.Add("SecurityEquipment", "security\\security-equipment\\");
+            AngularFolderDictionary.Add("SecurityDevice", "security\\security-device\\");
             AngularFolderDictionary.Add("VideoSurveillance", "security\\video-surveillance\\");
         }
 
@@ -75,11 +75,12 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement
             {
                 var folderName = AngularFolderDictionary[table.PascalMethodName];
                 var folder = Frontend_Code.FrontendOutputPath + folderName;
-                CommonMethod.CreateDirectoryIfNotExist(folder);
                 if (Program.IsOutputToProject)
                 {
                     folder = DataManageModulesPath + folderName;
                 }
+                CommonMethod.CreateDirectoryIfNotExist(folder);
+                CommonMethod.ClearFolderIfExistFiles(folder);
 
                 var componentName = table.AngularComponentName;
                 var tsContent = GenerateTsContent(table);
