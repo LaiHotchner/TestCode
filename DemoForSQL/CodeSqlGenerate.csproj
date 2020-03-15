@@ -49,7 +49,9 @@
     <Compile Include="Generate\3_Retrieval\Backend\Entity.cs" />
     <Compile Include="Generate\3_Retrieval\Frontend_Retrieval.cs" />
     <Compile Include="Generate\4_Statistic\Backend\Controller.cs" />
+    <Compile Include="Generate\4_Statistic\Backend\Dao.cs" />
     <Compile Include="Generate\4_Statistic\Backend\Entity.cs" />
+    <Compile Include="Generate\4_Statistic\Backend\Mapper.cs" />
     <Compile Include="Generate\4_Statistic\Backend\ServiceImpl.cs" />
     <Compile Include="Generate\4_Statistic\Backend\ServiceInterface.cs" />
     <Compile Include="Generate\4_Statistic\Frontend_Statistic.cs" />

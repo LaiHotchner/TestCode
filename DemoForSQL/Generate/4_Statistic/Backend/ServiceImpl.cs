@@ -41,15 +41,11 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
         private static string GetContent(List<HotchnerTable> tableList)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            var serviceField = $"{Backend_Statistic.FieldPrefix}Dao";
 
             stringBuilder.AppendLine("package " + Backend_Statistic.ServiceImplPackagePrefix + ";");
             stringBuilder.AppendLine();
-#warning DeviceType
-            stringBuilder.AppendLine("import com.infinite.common.constants.DeviceType;");
+            stringBuilder.AppendLine($"import {Backend_Statistic.DaoPackagePrefix}.*;");
             stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass};");
-            stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticSummaryClass};");
-            stringBuilder.AppendLine($"import {Backend_DeviceManagement.devicePackage}.*;");
             stringBuilder.AppendLine($"import {Backend_Statistic.ServiceInterfacePackagePrefix}.{Backend_Statistic.ServicesName};");
             stringBuilder.AppendLine("import org.springframework.beans.factory.annotation.Autowired;");
             stringBuilder.AppendLine("import org.springframework.stereotype.Service;");
@@ -59,26 +55,30 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("@Service");
             stringBuilder.AppendLine($"public class {Backend_Statistic.ServicesImplName} implements {Backend_Statistic.ServicesName} " + "{");
-            stringBuilder.AppendLine("");
-
             foreach (var table in tableList)
             {
                 stringBuilder.AppendLine("    @Autowired");
-                stringBuilder.AppendLine($"    private {Backend_DeviceManagement.GetServiceInterfaceClassName(table)} {GetServiceFieldName(table)};");
+                stringBuilder.AppendLine($"    private {Dao.GetDaoClassName(table)} {GetDaoFieldName(table)};");
             }
+            stringBuilder.AppendLine("");
             stringBuilder.AppendLine("    @Override");
-            stringBuilder.AppendLine($"    public {Entity.StatisticSummaryClass}> {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode) " + "{");
+            stringBuilder.AppendLine($"    public List<{Entity.StatisticInfoClass}> {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode) " + "{");
             stringBuilder.AppendLine($"        List<{Entity.StatisticInfoClass}> result = new ArrayList<>();");
+
+            foreach (var table in tableList)
+            {
+                stringBuilder.AppendLine($"        result.add({GetDaoFieldName(table)}.{Dao.GetEachStatisticInfo_MethodName(table)}());");
+            }
 
             stringBuilder.AppendLine("        return result;");
             stringBuilder.AppendLine("    }");
             stringBuilder.AppendLine("}");
             return stringBuilder.ToString();
         }
-        private static string GetServiceFieldName(HotchnerTable table)
+
+        private static string GetDaoFieldName(HotchnerTable table)
         {
-            return $"{table.camelcaseMethodName}Service";
+            return $"{table.camelcaseMethodName}Dao";
         }
     }
-
 }

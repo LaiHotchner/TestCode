@@ -20,17 +20,15 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 
             stringBuilder.AppendLine("package " + Backend_Statistic.ServiceInterfacePackagePrefix + ";");
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticSummaryClass};");
+            stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass};");
+            stringBuilder.AppendLine("");
+            stringBuilder.AppendLine("import java.util.List;");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine($"public interface {Backend_Statistic.ServicesName} " + "{");
-            stringBuilder.AppendLine($"    {Entity.StatisticSummaryClass} {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode);");
+            stringBuilder.AppendLine($"    List<{Entity.StatisticInfoClass}> {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode);");
             stringBuilder.AppendLine("}");
-
-
-
 
             return stringBuilder.ToString();
         }
-
     }
 }

@@ -17,7 +17,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 
         static Entity()
         {
-            StatisticInfoFieldDictionary.Add("deviceType", "int");
+            StatisticInfoFieldDictionary.Add("deviceType", "String");
             StatisticInfoFieldDictionary.Add("count", "int");
 
             StatisticSummaryFieldDictionary.Add("equipmentCount", "int[]");

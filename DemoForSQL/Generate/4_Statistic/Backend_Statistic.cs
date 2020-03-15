@@ -8,10 +8,9 @@ namespace CodeSqlGenerate.Generate._4_Statistic
     {
         public static readonly string FieldPrefix = "statistic";
 
-        #region 这两个值要一致，保证package路径和文件夹路径一致
+        // 这两个值要一致，保证package路径和文件夹路径一致
         public static readonly string statisticFolder = "statistic\\";
         public static readonly string statisticPackage = ".statistic";
-        #endregion
 
         internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + statisticPackage;
         internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + statisticPackage;
@@ -30,8 +29,10 @@ namespace CodeSqlGenerate.Generate._4_Statistic
             out string serviceInterfaceFolderPath);
 
             Entity.GenerateAllEntity(entityFolderPath);
+            Dao.Generate(daoFolderPath, tableList);
+            Mapper.Generate(mapperFolderPath, tableList);
             Controller.Generate(controllerFodlerPath, tableList);
-            //ServiceImpl.Generate(serviceImplFolderPaht, tableList);
+            ServiceImpl.Generate(serviceImplFolderPaht, tableList);
             ServiceInterface.Generate(serviceInterfaceFolderPath, tableList);
         }
 
@@ -44,8 +45,6 @@ namespace CodeSqlGenerate.Generate._4_Statistic
 
         // Restful_Api_Name
         public static string GetAllStatisticResult_MethodName = $"getAll{NamePrefix}Result";
-
-
 
     }
 }
