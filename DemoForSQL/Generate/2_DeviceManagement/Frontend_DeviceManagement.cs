@@ -62,11 +62,11 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement
             AngularFolderDictionary.Add("OtherDevice", "other-equipment\\other-device\\");
 
             // 安防设施
-            AngularFolderDictionary.Add("EvacuationRoute", "security\\evacuation-route\\");
-            AngularFolderDictionary.Add("PowerComm", "security\\power-comm\\");
-            AngularFolderDictionary.Add("ProtectiveFence", "security\\protective-fence\\");
-            AngularFolderDictionary.Add("SecurityDevice", "security\\security-device\\");
-            AngularFolderDictionary.Add("VideoSurveillance", "security\\video-surveillance\\");
+            AngularFolderDictionary.Add("EvacuationRoute", "security-equipment\\evacuation-route\\");
+            AngularFolderDictionary.Add("PowerComm", "security-equipment\\power-comm\\");
+            AngularFolderDictionary.Add("ProtectiveFence", "security-equipment\\protective-fence\\");
+            AngularFolderDictionary.Add("SecurityDevice", "security-equipment\\security-device\\");
+            AngularFolderDictionary.Add("VideoSurveillance", "security-equipment\\video-surveillance\\");
         }
 
         public static void GenerateCode(List<HotchnerTable> tableList)
