@@ -23,7 +23,7 @@ namespace CodeSqlGenerate.Generate._5_Anchors.Backend
             AnchorsFieldDictionary.Add("positions", "List<Position>");
         }
 
-        public static void GenerateAllEntity(string entityFolderPath)
+        public static void Generate(string entityFolderPath)
         {
             _entityFolderPath = entityFolderPath;
 

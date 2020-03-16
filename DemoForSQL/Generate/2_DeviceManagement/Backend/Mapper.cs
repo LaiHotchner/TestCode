@@ -1,11 +1,23 @@
-﻿using CodeSqlGenerate.Data;
+﻿using System.Collections.Generic;
+using System.IO;
+using CodeSqlGenerate.Data;
 using System.Text;
 
 namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
 {
     internal class Mapper
     {
-        internal static string GetContent(HotchnerTable table)
+        internal static void Generate(string folderPath, List<HotchnerTable> tableList)
+        {
+            foreach (var table in tableList)
+            {
+                var content = GetContent(table);
+                var filePath = folderPath + $"{Backend_DeviceManagement.GetMapperFileName(table)}.xml";
+                File.WriteAllText(filePath, content, new UTF8Encoding(false));
+            }
+        }
+
+        private static string GetContent(HotchnerTable table)
         {
             var dbTableName = table.DbTableName;
             var entityName = Backend_DeviceManagement.GetEntityName(table);

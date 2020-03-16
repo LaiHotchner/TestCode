@@ -9,30 +9,30 @@ namespace CodeSqlGenerate.Generate._5_Anchors
         public static readonly string FieldPrefix = "anchors";
 
         // 这两个值要一致，保证package路径和文件夹路径一致
-        public static readonly string archorsFolder = "anchors\\";
-        public static readonly string archorsPackage = ".anchors";
+        public static readonly string ArchorsFolder = "anchors\\";
+        public static readonly string ArchorsPackage = ".anchors";
 
-        internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + archorsPackage;
-        internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + archorsPackage;
-        internal static readonly string ControllerPackagePrefix = Backend_Code.BaseControllerPackagePrefix + archorsPackage;
-        internal static readonly string ServiceImplPackagePrefix = Backend_Code.BaseServiceImplPackagePrefix + archorsPackage;
-        internal static readonly string ServiceInterfacePackagePrefix = Backend_Code.BaseServiceInterfacePackagePrefix + archorsPackage;
+        internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + ArchorsPackage;
+        internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + ArchorsPackage;
+        internal static readonly string ControllerPackagePrefix = Backend_Code.BaseControllerPackagePrefix + ArchorsPackage;
+        internal static readonly string ServiceImplPackagePrefix = Backend_Code.BaseServiceImplPackagePrefix + ArchorsPackage;
+        internal static readonly string ServiceInterfacePackagePrefix = Backend_Code.BaseServiceInterfacePackagePrefix + ArchorsPackage;
 
         public static void GenerateCode(List<HotchnerTable> tableList)
         {
-            Backend_Code.PreProcessFolder(archorsFolder,
-              out string entityFolderPath,
-              out string daoFolderPath,
-              out string mapperFolderPath,
-              out string controllerFodlerPath,
-              out string serviceImplFolderPaht,
-              out string serviceInterfaceFolderPath);
+            Backend_Code.PreProcessFolder(ArchorsFolder,
+                out var entityFolderPath,
+                out var daoFolderPath,
+                out var mapperFolderPath,
+                out var controllerFolderPath,
+                out var serviceImplFolderPath,
+                out var serviceInterfaceFolderPath);
 
-            Entity.GenerateAllEntity(entityFolderPath);
+            Entity.Generate(entityFolderPath);
             Dao.Generate(daoFolderPath, tableList);
             Mapper.Generate(mapperFolderPath, tableList);
-            Controller.Generate(controllerFodlerPath, tableList);
-            ServiceImpl.Generate(serviceImplFolderPaht, tableList);
+            Controller.Generate(controllerFolderPath, tableList);
+            ServiceImpl.Generate(serviceImplFolderPath, tableList);
             ServiceInterface.Generate(serviceInterfaceFolderPath, tableList);
         }
 
@@ -42,6 +42,7 @@ namespace CodeSqlGenerate.Generate._5_Anchors
         internal static string ControllerName = $"{NamePrefix}Controller";
         internal static string ServicesName = $"{NamePrefix}Service";
         internal static string ServicesImplName = $"{NamePrefix}ServiceImpl";
+
 
         // Restful_Api_Name
         // In controller, use this method

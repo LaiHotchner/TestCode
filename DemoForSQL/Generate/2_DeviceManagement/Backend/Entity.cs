@@ -72,48 +72,53 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
             RowTypeJavaDict.Add("VARCHAR2(80)", "String");
         }
 
-        internal static void GenerateAllEntity(List<HotchnerTable> tableList, string entityFolderPath)
+        internal static void Generate(string folderPath, List<HotchnerTable> tableList)
         {
             foreach (var table in tableList)
             {
-                var entityName = Backend_DeviceManagement.GetEntityName(table);
-                StringBuilder entityBuilder = new StringBuilder();
-                entityBuilder.AppendLine("package " + Backend_DeviceManagement.EntityPackagePrefix + ";");
-                entityBuilder.AppendLine("");
-                entityBuilder.AppendLine("import java.sql.Timestamp;");
-                entityBuilder.AppendLine("import java.util.Date;");
-                entityBuilder.AppendLine("");
-                entityBuilder.AppendLine($"public class {entityName} " + "{");
-
-                foreach (var row in table.RowList)
-                {
-                    entityBuilder.AppendLine($"    // {row.Description}");
-                    entityBuilder.AppendLine($"    private {RowTypeJavaDict[row.RowType]} {row.Name.ToLower()};");
-                }
-                entityBuilder.AppendLine("");
-
-                foreach (var row in table.RowList)
-                {
-                    string javeType = RowTypeJavaDict[row.RowType];
-                    string firstUpOtherLow = CommonMethod.GetFirstUpAndOtherLowString(row.Name);
-                    string nameLower = row.Name.ToLower();
-
-                    entityBuilder.AppendLine($"    public {javeType} get{firstUpOtherLow}() " + "{");
-                    entityBuilder.AppendLine($"        return {row.Name.ToLower()};");
-                    entityBuilder.AppendLine("    }");
-                    entityBuilder.AppendLine("");
-                    entityBuilder.AppendLine($"    public void set{firstUpOtherLow}({javeType} {nameLower}) " + "{");
-                    entityBuilder.AppendLine($"        this.{nameLower} = {nameLower};");
-                    entityBuilder.AppendLine("    }");
-                    entityBuilder.AppendLine("");
-                }
-
-                entityBuilder.AppendLine("}");
-
-                var content = entityBuilder.ToString();
-                var filePath = entityFolderPath + $"\\{entityName}.java";
-                File.WriteAllText(filePath, content, new UTF8Encoding(false));
+                GenerateEntity(folderPath, table);
             }
+        }
+
+        private static void GenerateEntity(string entityFolderPath, HotchnerTable table)
+        {
+            var entityName = Backend_DeviceManagement.GetEntityName(table);
+            StringBuilder entityBuilder = new StringBuilder();
+            entityBuilder.AppendLine("package " + Backend_DeviceManagement.EntityPackagePrefix + ";");
+            entityBuilder.AppendLine("");
+            entityBuilder.AppendLine("import java.sql.Timestamp;");
+            entityBuilder.AppendLine("import java.util.Date;");
+            entityBuilder.AppendLine("");
+            entityBuilder.AppendLine($"public class {entityName} " + "{");
+
+            foreach (var row in table.RowList)
+            {
+                entityBuilder.AppendLine($"    // {row.Description}");
+                entityBuilder.AppendLine($"    private {RowTypeJavaDict[row.RowType]} {row.Name.ToLower()};");
+            }
+            entityBuilder.AppendLine("");
+
+            foreach (var row in table.RowList)
+            {
+                string javeType = RowTypeJavaDict[row.RowType];
+                string firstUpOtherLow = CommonMethod.GetFirstUpAndOtherLowString(row.Name);
+                string nameLower = row.Name.ToLower();
+
+                entityBuilder.AppendLine($"    public {javeType} get{firstUpOtherLow}() " + "{");
+                entityBuilder.AppendLine($"        return {row.Name.ToLower()};");
+                entityBuilder.AppendLine("    }");
+                entityBuilder.AppendLine("");
+                entityBuilder.AppendLine($"    public void set{firstUpOtherLow}({javeType} {nameLower}) " + "{");
+                entityBuilder.AppendLine($"        this.{nameLower} = {nameLower};");
+                entityBuilder.AppendLine("    }");
+                entityBuilder.AppendLine("");
+            }
+
+            entityBuilder.AppendLine("}");
+
+            var content = entityBuilder.ToString();
+            var filePath = entityFolderPath + $"\\{entityName}.java";
+            File.WriteAllText(filePath, content, new UTF8Encoding(false));
         }
     }
 }

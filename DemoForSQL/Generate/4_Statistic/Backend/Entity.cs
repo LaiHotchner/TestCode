@@ -24,7 +24,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             StatisticSummaryFieldDictionary.Add("categoryCount", "int[]");
         }
 
-        public static void GenerateAllEntity(string entityFolderPath)
+        public static void Generate(string entityFolderPath)
         {
             _entityFolderPath = entityFolderPath;
 

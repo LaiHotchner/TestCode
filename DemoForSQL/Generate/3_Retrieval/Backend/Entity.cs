@@ -28,7 +28,7 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             RetrievalParameterFieldDictionary.Add("keyword", "关键字");
         }
 
-        public static void GenerateAllEntity(string entityFolderPath)
+        public static void Generate(string entityFolderPath)
         {
             _entityFolderPath = entityFolderPath;
 

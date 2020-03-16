@@ -8,32 +8,31 @@ namespace CodeSqlGenerate.Generate._3_Retrieval
     {
         public static readonly string FieldPrefix = "retrieval";
 
-        #region 这两个值要一致，保证package路径和文件夹路径一致
-        public static readonly string retrievalFolder = "retrieval\\";
-        public static readonly string retrievalPackage = ".retrieval";
-        #endregion
+        // 这两个值要一致，保证package路径和文件夹路径一致
+        public static readonly string RetrievalFolder = "retrieval\\";
+        public static readonly string RetrievalPackage = ".retrieval";
 
-        internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + retrievalPackage;
-        internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + retrievalPackage;
-        internal static readonly string ControllerPackagePrefix = Backend_Code.BaseControllerPackagePrefix + retrievalPackage;
-        internal static readonly string ServiceImplPackagePrefix = Backend_Code.BaseServiceImplPackagePrefix + retrievalPackage;
-        internal static readonly string ServiceInterfacePackagePrefix = Backend_Code.BaseServiceInterfacePackagePrefix + retrievalPackage;
+        internal static readonly string EntityPackagePrefix = Backend_Code.BaseEntityPackagePrefix + RetrievalPackage;
+        internal static readonly string DaoPackagePrefix = Backend_Code.BaseDaoPackagePrefix + RetrievalPackage;
+        internal static readonly string ControllerPackagePrefix = Backend_Code.BaseControllerPackagePrefix + RetrievalPackage;
+        internal static readonly string ServiceImplPackagePrefix = Backend_Code.BaseServiceImplPackagePrefix + RetrievalPackage;
+        internal static readonly string ServiceInterfacePackagePrefix = Backend_Code.BaseServiceInterfacePackagePrefix + RetrievalPackage;
 
         public static void GenerateCode(List<HotchnerTable> tableList)
         {
-            Backend_Code.PreProcessFolder(retrievalFolder,
-              out string entityFolderPath,
-              out string daoFolderPath,
-              out string mapperFolderPath,
-              out string controllerFodlerPath,
-              out string serviceImplFolderPaht,
-              out string serviceInterfaceFolderPath);
+            Backend_Code.PreProcessFolder(RetrievalFolder,
+                out var entityFolderPath,
+                out var daoFolderPath,
+                out var mapperFolderPath,
+                out var controllerFolderPath,
+                out var serviceImplFolderPath,
+                out var serviceInterfaceFolderPath);
 
-            Entity.GenerateAllEntity(entityFolderPath);
+            Entity.Generate(entityFolderPath);
             Dao.Generate(daoFolderPath, tableList);
             Mapper.Generate(mapperFolderPath, tableList);
-            Controller.Generate(controllerFodlerPath, tableList);
-            ServiceImpl.Generate(serviceImplFolderPaht, tableList);
+            Controller.Generate(controllerFolderPath, tableList);
+            ServiceImpl.Generate(serviceImplFolderPath, tableList);
             ServiceInterface.Generate(serviceInterfaceFolderPath, tableList);
         }
 
@@ -54,7 +53,7 @@ namespace CodeSqlGenerate.Generate._3_Retrieval
         }
 
 
-        // 在Controller层根据查询的设备类型，调用不同的Devcie Service层，去查询不同的设备，因此不需要后续的Dao层
+        // 在Controller层根据查询的设备类型，调用不同的 Device Service层，去查询不同的设备，因此不需要后续的Dao层
         public static string GetRetrievalDetailMethodName = $"get{NamePrefix}Detail";
         #endregion
     }
