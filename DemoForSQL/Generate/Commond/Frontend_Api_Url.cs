@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using CodeSqlGenerate.Generate._2_Devices;
+using CodeSqlGenerate.Generate._4_Statistic;
 
 namespace CodeSqlGenerate.Generate.Commond
 {
@@ -32,13 +33,17 @@ namespace CodeSqlGenerate.Generate.Commond
             stringBuilder.AppendLine("  // 三维场景");
             stringBuilder.AppendLine("  public static UAVS_3D_SCENE = API.USBD_3D_BASE_URL + '3D-worldscene/rest/realspace';");
             stringBuilder.AppendLine("  // 所有点坐标");
-            stringBuilder.AppendLine($"  public static {Frontend_Anchors.Get_AnchorsByType_Url} = HTTP_REST_BASE_URL + '/device/{Backend_Anchors.GetAnchorsByDeviceType_MethodName}';");
+            stringBuilder.AppendLine($"  public static {Frontend_Anchors.Get_AnchorsByType_Url} = HTTP_REST_BASE_URL + " +
+                                     $"'/device/{Backend_Anchors.GetAnchorsByDeviceType_MethodName}';");
             stringBuilder.AppendLine("  // 检索设备信息");
-            stringBuilder.AppendLine($"  public static {Frontend_Retrieval.Get_RetrievalAll_Url} = HTTP_REST_BASE_URL + '/device/{Backend_Retrieval.GetRetrievalAllMethodName}';");
+            stringBuilder.AppendLine($"  public static {Frontend_Retrieval.Get_RetrievalAll_Url} = HTTP_REST_BASE_URL + " +
+                                     $"'/device/{Backend_Retrieval.GetRetrievalAllMethodName}';");
             stringBuilder.AppendLine("  // 检索设备详细信息");
-            stringBuilder.AppendLine($"  public static {Frontend_Retrieval.Get_RetrievalDetail_Url} = HTTP_REST_BASE_URL + '/device/{Backend_Retrieval.GetRetrievalDetailMethodName}';");
+            stringBuilder.AppendLine($"  public static {Frontend_Retrieval.Get_RetrievalDetail_Url} = HTTP_REST_BASE_URL + " +
+                                     $"'/device/{Backend_Retrieval.GetRetrievalDetailMethodName}';");
             stringBuilder.AppendLine("  // 获取设备统计信息");
-            stringBuilder.AppendLine("  public static STATISTICAL_DEVICE = HTTP_REST_BASE_URL + '/device/getStatisticalResult';");
+            stringBuilder.AppendLine($"  public static STATISTICAL_DEVICE = HTTP_REST_BASE_URL + " +
+                                     $"'/device/{Backend_Statistic.GetAllStatisticResult_MethodName}';");
             stringBuilder.AppendLine("");
             #endregion
             #region CURD URL
