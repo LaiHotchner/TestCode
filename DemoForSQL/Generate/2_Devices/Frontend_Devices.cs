@@ -1,11 +1,11 @@
-﻿using CodeSqlGenerate.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Generate._2_DeviceManagement
+namespace CodeSqlGenerate.Generate._2_Devices
 {
-    public static class Frontend_DeviceManagement
+    public static class Frontend_Devices
     {
         private static readonly string DataManageModulesPath = @"C:\0_Workspace\ict\src\app\ict\content-modules\data-manage\";
         private static readonly Dictionary<string, string> AngularFolderDictionary = new Dictionary<string, string>();
@@ -47,7 +47,7 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement
         }
         #endregion
 
-        static Frontend_DeviceManagement()
+        static Frontend_Devices()
         {
 #warning 这里在新增设备类型时，需要修改
             // 基本设施

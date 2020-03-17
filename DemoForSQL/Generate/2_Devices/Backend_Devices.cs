@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CodeSqlGenerate.Generate._2_DeviceManagement
 {
-    public static class Backend_DeviceManagement
+    public static class Backend_Devices
     {
         public static readonly string FieldPrefix = "devices";
 

@@ -5,6 +5,7 @@ using CodeSqlGenerate.Generate._5_Anchors;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Generate._2_Devices;
 
 namespace CodeSqlGenerate.Generate.Commond
 {
@@ -48,17 +49,17 @@ namespace CodeSqlGenerate.Generate.Commond
                 stringBuilder.AppendLine("   * " + table.TableDescription + "API");
                 stringBuilder.AppendLine("   */");
                 stringBuilder.AppendLine("    // " + table.TableDescription + "导入");
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_Upload_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetImportMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_Upload_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetImportMethodName(table)}';");
                 stringBuilder.AppendLine("  // " + table.TableDescription + "导入确认");
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_Upload_Confirm_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetImportConfirmMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_Upload_Confirm_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetImportConfirmMethodName(table)}';");
                 stringBuilder.AppendLine("  // 增加" + table.TableDescription);
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_Add_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetCreateMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_Add_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetCreateMethodName(table)}';");
                 stringBuilder.AppendLine("  // 修改" + table.TableDescription);
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_Update_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetUpdateMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_Update_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetUpdateMethodName(table)}';");
                 stringBuilder.AppendLine("  // 修改" + table.TableDescription);
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_Delete_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetDeleteByIdMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_Delete_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetDeleteByIdMethodName(table)}';");
                 stringBuilder.AppendLine("  // 查询全部" + table.TableDescription);
-                stringBuilder.AppendLine($"  public static {Frontend_DeviceManagement.Get_FIND_ALL_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_DeviceManagement.GetAllMethodName(table)}';");
+                stringBuilder.AppendLine($"  public static {Frontend_Devices.Get_FIND_ALL_Url(table)} = HTTP_REST_BASE_URL + '/device/{Backend_Devices.GetAllMethodName(table)}';");
                 stringBuilder.AppendLine("");
             }
             #endregion

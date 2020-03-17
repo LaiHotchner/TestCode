@@ -30,9 +30,9 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             stringBuilder.AppendLine("import com.infinite.common.base.ResponseBase;");
             stringBuilder.AppendLine($"import {Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalParameterClass};");
             stringBuilder.AppendLine($"import {Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalResultClass};");
-            stringBuilder.AppendLine($"import {Backend_DeviceManagement.EntityPackagePrefix}.*;");
+            stringBuilder.AppendLine($"import {Backend_Devices.EntityPackagePrefix}.*;");
             stringBuilder.AppendLine($"import {Backend_Retrieval.ServiceInterfacePackagePrefix}.{Backend_Retrieval.ServicesName};");
-            stringBuilder.AppendLine($"import {Backend_DeviceManagement.DeviceServiceInterfacePackagePrefix}.*;");
+            stringBuilder.AppendLine($"import {Backend_Devices.DeviceServiceInterfacePackagePrefix}.*;");
             stringBuilder.AppendLine("import org.springframework.beans.factory.annotation.Autowired;");
             stringBuilder.AppendLine("import org.springframework.web.bind.annotation.RequestBody;");
             stringBuilder.AppendLine("import org.springframework.web.bind.annotation.RequestMapping;");
@@ -54,7 +54,7 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             foreach (var table in tableList)
             {
                 var deviceServiceFieldName = GetDeviceServiceFieldName(table);
-                var deviceServiceInterfaceClassName = Backend_DeviceManagement.GetServiceInterfaceClassName(table);
+                var deviceServiceInterfaceClassName = Backend_Devices.GetServiceInterfaceClassName(table);
                 stringBuilder.AppendLine("    @Autowired");
                 stringBuilder.AppendLine("    private " + deviceServiceInterfaceClassName + " " + deviceServiceFieldName + ";");
             }
@@ -92,9 +92,9 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             foreach (var table in tableList)
             {
                 var deviceType = table.PascalMethodName;
-                var deviceEntityName = Backend_DeviceManagement.GetEntityName(table);
+                var deviceEntityName = Backend_Devices.GetEntityName(table);
                 var deviceServiceFieldName = GetDeviceServiceFieldName(table);
-                var deviceGetByIdMethodName = Backend_DeviceManagement.GetByIdMethodName(table); ;
+                var deviceGetByIdMethodName = Backend_Devices.GetByIdMethodName(table); ;
                 if (index == 0)
                 {
                     stringBuilder.AppendLine("            if (deviceType.equals(\"" + deviceType + "\")) {");

@@ -82,9 +82,9 @@ namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
 
         private static void GenerateEntity(string entityFolderPath, HotchnerTable table)
         {
-            var entityName = Backend_DeviceManagement.GetEntityName(table);
+            var entityName = Backend_Devices.GetEntityName(table);
             StringBuilder entityBuilder = new StringBuilder();
-            entityBuilder.AppendLine("package " + Backend_DeviceManagement.EntityPackagePrefix + ";");
+            entityBuilder.AppendLine("package " + Backend_Devices.EntityPackagePrefix + ";");
             entityBuilder.AppendLine("");
             entityBuilder.AppendLine("import java.sql.Timestamp;");
             entityBuilder.AppendLine("import java.util.Date;");

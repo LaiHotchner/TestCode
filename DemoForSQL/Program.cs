@@ -9,6 +9,7 @@ using CodeSqlGenerate.Generate._5_Anchors;
 using CodeSqlGenerate.Generate.Commond;
 using System.Collections.Generic;
 using System.IO;
+using CodeSqlGenerate.Generate._2_Devices;
 
 namespace CodeSqlGenerate
 {
@@ -30,8 +31,8 @@ namespace CodeSqlGenerate
             SqlScript.GenerateSqlScript("CreateDeviceSql", allTableList);
             ImportTemplate.GenerateTemplate(allTableList);
 
-            Backend_DeviceManagement.GenerateCode(allTableList);
-            Frontend_DeviceManagement.GenerateCode(allTableList);
+            Backend_Devices.GenerateCode(allTableList);
+            Frontend_Devices.GenerateCode(allTableList);
 
             Backend_Retrieval.GenerateCode(allTableList);
             Frontend_Retrieval.GenerateCode(allTableList);
