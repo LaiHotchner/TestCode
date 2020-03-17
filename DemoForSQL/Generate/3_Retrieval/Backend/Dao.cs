@@ -1,5 +1,4 @@
 ﻿using CodeSqlGenerate.Data;
-using CodeSqlGenerate.Generate._3_Retrieval;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;

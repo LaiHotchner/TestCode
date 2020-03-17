@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
 using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Generate
+namespace CodeSqlGenerate.Utility
 {
     public static class OpenCsv
     {

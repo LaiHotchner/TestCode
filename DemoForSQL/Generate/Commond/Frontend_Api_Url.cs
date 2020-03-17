@@ -1,5 +1,4 @@
 ﻿using CodeSqlGenerate.Data;
-using CodeSqlGenerate.Generate._2_DeviceManagement;
 using CodeSqlGenerate.Generate._3_Retrieval;
 using CodeSqlGenerate.Generate._5_Anchors;
 using System.Collections.Generic;

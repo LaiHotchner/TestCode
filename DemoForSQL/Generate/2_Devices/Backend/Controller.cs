@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using CodeSqlGenerate.Data;
 using System.Text;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
+namespace CodeSqlGenerate.Generate._2_Devices.Backend
 {
     public class Controller
     {

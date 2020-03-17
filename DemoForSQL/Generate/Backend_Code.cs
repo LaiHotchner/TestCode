@@ -1,4 +1,6 @@
-﻿namespace CodeSqlGenerate.Generate
+﻿using CodeSqlGenerate.Utility;
+
+namespace CodeSqlGenerate.Generate
 {
     public static class Backend_Code
     {
@@ -21,15 +23,15 @@
             out string entityFolderPath,
             out string daoFolderPath,
             out string mapperFolderPath,
-            out string controllerFodlerPath,
-            out string serviceImplFolderPaht,
+            out string controllerFolderPath,
+            out string serviceImplFolderPath,
             out string serviceInterfaceFolderPath)
         {
             entityFolderPath = BackendOutputPath + EntityPath + folderPrefix;
             daoFolderPath = BackendOutputPath + DaoPath + folderPrefix;
             mapperFolderPath = BackendOutputPath + MapperPath + folderPrefix;
-            controllerFodlerPath = BackendOutputPath + ControllerPath + folderPrefix;
-            serviceImplFolderPaht = BackendOutputPath + ServiceImplPath + folderPrefix;
+            controllerFolderPath = BackendOutputPath + ControllerPath + folderPrefix;
+            serviceImplFolderPath = BackendOutputPath + ServiceImplPath + folderPrefix;
             serviceInterfaceFolderPath = BackendOutputPath + ServiceInterfacePath + folderPrefix;
 
             if (Program.IsOutputToProject)
@@ -37,16 +39,16 @@
                 entityFolderPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + EntityPath + folderPrefix;
                 daoFolderPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + DaoPath + folderPrefix;
                 mapperFolderPath = @"C:\0_Workspace\icts\src\main\resources\" + MapperPath + folderPrefix;
-                controllerFodlerPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + ControllerPath + folderPrefix;
-                serviceImplFolderPaht = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + ServiceImplPath + folderPrefix;
+                controllerFolderPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + ControllerPath + folderPrefix;
+                serviceImplFolderPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + ServiceImplPath + folderPrefix;
                 serviceInterfaceFolderPath = @"C:\0_Workspace\icts\src\main\java\com\infinite\icts\" + ServiceInterfacePath + folderPrefix;
             }
 
             CommonMethod.CreateDirectoryIfNotExist(entityFolderPath);
             CommonMethod.CreateDirectoryIfNotExist(daoFolderPath);
             CommonMethod.CreateDirectoryIfNotExist(mapperFolderPath);
-            CommonMethod.CreateDirectoryIfNotExist(controllerFodlerPath);
-            CommonMethod.CreateDirectoryIfNotExist(serviceImplFolderPaht);
+            CommonMethod.CreateDirectoryIfNotExist(controllerFolderPath);
+            CommonMethod.CreateDirectoryIfNotExist(serviceImplFolderPath);
             CommonMethod.CreateDirectoryIfNotExist(serviceInterfaceFolderPath);
 
             if (!string.IsNullOrEmpty(folderPrefix))
@@ -54,8 +56,8 @@
                 CommonMethod.ClearFolderIfExistFiles(entityFolderPath);
                 CommonMethod.ClearFolderIfExistFiles(daoFolderPath);
                 CommonMethod.ClearFolderIfExistFiles(mapperFolderPath);
-                CommonMethod.ClearFolderIfExistFiles(controllerFodlerPath);
-                CommonMethod.ClearFolderIfExistFiles(serviceImplFolderPaht);
+                CommonMethod.ClearFolderIfExistFiles(controllerFolderPath);
+                CommonMethod.ClearFolderIfExistFiles(serviceImplFolderPath);
                 CommonMethod.ClearFolderIfExistFiles(serviceInterfaceFolderPath);
             }
         }

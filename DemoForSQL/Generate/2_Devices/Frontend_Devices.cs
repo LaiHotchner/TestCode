@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Utility;
 
 namespace CodeSqlGenerate.Generate._2_Devices
 {

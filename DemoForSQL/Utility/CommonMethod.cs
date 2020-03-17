@@ -1,7 +1,7 @@
-﻿using CodeSqlGenerate.Data;
-using System.IO;
+﻿using System.IO;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Generate
+namespace CodeSqlGenerate.Utility
 {
     public static class CommonMethod
     {

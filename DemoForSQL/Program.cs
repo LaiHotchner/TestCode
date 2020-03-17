@@ -1,15 +1,14 @@
 ﻿using CodeSqlGenerate.Data;
-using CodeSqlGenerate.Generate;
-using CodeSqlGenerate.Generate._0_sql;
+using CodeSqlGenerate.Generate._0_Sql;
 using CodeSqlGenerate.Generate._1_Template;
-using CodeSqlGenerate.Generate._2_DeviceManagement;
+using CodeSqlGenerate.Generate._2_Devices;
 using CodeSqlGenerate.Generate._3_Retrieval;
 using CodeSqlGenerate.Generate._4_Statistic;
 using CodeSqlGenerate.Generate._5_Anchors;
 using CodeSqlGenerate.Generate.Commond;
 using System.Collections.Generic;
 using System.IO;
-using CodeSqlGenerate.Generate._2_Devices;
+using CodeSqlGenerate.Utility;
 
 namespace CodeSqlGenerate
 {

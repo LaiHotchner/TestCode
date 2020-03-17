@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Utility;
 
 namespace CodeSqlGenerate.Generate._1_Template
 {

@@ -1,9 +1,10 @@
-﻿using CodeSqlGenerate.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Utility;
 
-namespace CodeSqlGenerate.Generate._2_DeviceManagement.Backend
+namespace CodeSqlGenerate.Generate._2_Devices.Backend
 {
     internal class Entity
     {

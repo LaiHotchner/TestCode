@@ -1,8 +1,8 @@
-﻿using CodeSqlGenerate.Data;
-using CodeSqlGenerate.Generate._2_DeviceManagement.Backend;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CodeSqlGenerate.Data;
+using CodeSqlGenerate.Generate._2_Devices.Backend;
 
-namespace CodeSqlGenerate.Generate._2_DeviceManagement
+namespace CodeSqlGenerate.Generate._2_Devices
 {
     public static class Backend_Devices
     {

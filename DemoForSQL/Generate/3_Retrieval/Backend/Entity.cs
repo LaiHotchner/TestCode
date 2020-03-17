@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Utility;
 
 namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 {

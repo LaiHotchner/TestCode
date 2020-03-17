@@ -1,9 +1,9 @@
-﻿using CodeSqlGenerate.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Data;
 
-namespace CodeSqlGenerate.Generate._0_sql
+namespace CodeSqlGenerate.Generate._0_Sql
 {
     public static class SqlScript
     {

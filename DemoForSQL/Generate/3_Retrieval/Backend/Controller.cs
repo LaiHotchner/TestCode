@@ -1,9 +1,8 @@
 ﻿using CodeSqlGenerate.Data;
-using CodeSqlGenerate.Generate._2_DeviceManagement;
-using CodeSqlGenerate.Generate._3_Retrieval;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using CodeSqlGenerate.Generate._2_Devices;
 
 namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 {
