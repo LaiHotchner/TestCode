@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Threading;
 using CodeSqlGenerate.Data;
 using CodeSqlGenerate.Utility;
 
@@ -182,7 +183,7 @@ namespace CodeSqlGenerate.Generate._1_Template
                     if (rowName == "id") { continue; }
                     if (GenerateMc(i, rowBuilder, row, table)) { continue; }
                     if (GenerateAdminCode(random, rowBuilder, row)) { continue; }
-                    if (GenerateLongtitude(random, rowBuilder, row)) { continue; }
+                    if (GenerateLongitude(random, rowBuilder, row)) { continue; }
                     if (GenerateLatitude(random, rowBuilder, row)) { continue; }
                     if (GenerateSzx(random, rowBuilder, row)) { continue; }
                     if (GenerateSxx(random, rowBuilder, row)) { continue; }
@@ -242,21 +243,21 @@ namespace CodeSqlGenerate.Generate._1_Template
             {
                 var prefix = "101";
                 var cityIndex = random.Next(1, 11);
-                var cityStr = string.Format("{0:d3}", cityIndex);
-                var localPoliceStationIndex = random.Next(1, CityMaxDictionary[cityIndex]);
-                var localPoliceStationStr = string.Format("{0:d3}", localPoliceStationIndex);
+                var cityStr = $"{cityIndex:d3}";
+                var localPoliceStationIndex = random.Next(1, CityMaxDictionary[cityIndex] + 1);
+                var localPoliceStationStr = $"{localPoliceStationIndex:d3}";
                 var adminCode = prefix + cityStr + localPoliceStationStr + ",";
                 rowBuilder.Append(adminCode);
                 return true;
             }
             return false;
         }
-        private static bool GenerateLongtitude(Random random, StringBuilder rowBuilder, HotchnerRow row)
+        private static bool GenerateLongitude(Random random, StringBuilder rowBuilder, HotchnerRow row)
         {
             if (row.Name.ToLower() == "x")
             {
                 double longitude = 120.1 + random.Next(0, 10000) / 100000.0;
-                rowBuilder.Append(longitude.ToString() + ",");
+                rowBuilder.Append(longitude + ",");
                 return true;
             }
             return false;

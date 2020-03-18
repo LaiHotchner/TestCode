@@ -68,6 +68,7 @@ namespace CodeSqlGenerate.Utility
             }
             // Add the last table in result
             table.RowList.AddRange(rowList);
+            table.AppendAdminCodeRowToTable();
 
             result.TableList.Add(table);
             sr.Close();

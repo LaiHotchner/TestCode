@@ -26,7 +26,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             outterBuilder.AppendLine($"<mapper namespace=\"{Backend_Statistic.DaoPackagePrefix}.{Dao.GetDaoClassName(table)}\">");
 
             outterBuilder.AppendLine($"    <select id=\"{Dao.GetEachStatisticInfo_MethodName(table)}\"  resultType=\"{Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass}\">");
-            outterBuilder.AppendLine($"                SELECT count(1), '{table.PascalMethodName}' as deviceType FROM public.{table.DbTableName} where available = 1");
+            outterBuilder.AppendLine($"                SELECT count(1), '{table.PascalMethodName}' as deviceType FROM public.{table.DbTableName} where available = 1 " + "${" + "keyword" + "}");
             outterBuilder.AppendLine("    </select>");
             outterBuilder.AppendLine("</mapper>");
 

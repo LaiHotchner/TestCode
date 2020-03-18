@@ -24,11 +24,12 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine("package " + Backend_Statistic.DaoPackagePrefix + ";");
             stringBuilder.AppendLine();
             stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass};");
+            stringBuilder.AppendLine("import org.apache.ibatis.annotations.Param;");
             stringBuilder.AppendLine("import org.springframework.stereotype.Repository;");
             stringBuilder.AppendLine();
             stringBuilder.AppendLine("@Repository");
             stringBuilder.AppendLine("public interface " + daoClassName + " {");
-            stringBuilder.AppendLine($"    {Entity.StatisticInfoClass} {GetEachStatisticInfo_MethodName(table)}();");
+            stringBuilder.AppendLine($"    {Entity.StatisticInfoClass} {GetEachStatisticInfo_MethodName(table)}(@Param(\"keyword\") String keyword);");
             stringBuilder.AppendLine("}");
             return stringBuilder.ToString();
         }

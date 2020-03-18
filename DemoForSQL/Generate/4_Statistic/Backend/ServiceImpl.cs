@@ -43,6 +43,8 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 
             stringBuilder.AppendLine("package " + Backend_Statistic.ServiceImplPackagePrefix + ";");
             stringBuilder.AppendLine();
+            
+            stringBuilder.AppendLine("import com.infinite.common.entity.AdminCode;");
             stringBuilder.AppendLine($"import {Backend_Statistic.DaoPackagePrefix}.*;");
             stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass};");
             stringBuilder.AppendLine($"import {Backend_Statistic.ServiceInterfacePackagePrefix}.{Backend_Statistic.ServicesName};");
@@ -63,10 +65,13 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine("    @Override");
             stringBuilder.AppendLine($"    public List<{Entity.StatisticInfoClass}> {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode) " + "{");
             stringBuilder.AppendLine($"        List<{Entity.StatisticInfoClass}> result = new ArrayList<>();");
+            stringBuilder.AppendLine($"        AdminCode code = new AdminCode();");
+            stringBuilder.AppendLine($"        code.setAdminCode(adminCode);");
+            stringBuilder.AppendLine($"        String queryStr = code.GetQueryStr();");
 
             foreach (var table in tableList)
             {
-                stringBuilder.AppendLine($"        result.add({GetDaoFieldName(table)}.{Dao.GetEachStatisticInfo_MethodName(table)}());");
+                stringBuilder.AppendLine($"        result.add({GetDaoFieldName(table)}.{Dao.GetEachStatisticInfo_MethodName(table)}(queryStr));");
             }
 
             stringBuilder.AppendLine("        return result;");
