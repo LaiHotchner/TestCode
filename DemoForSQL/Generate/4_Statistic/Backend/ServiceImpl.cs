@@ -7,8 +7,6 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
 {
     public static class ServiceImpl
     {
-        private static readonly Dictionary<string, string> AngularFolderDictionary = new Dictionary<string, string>();
-
         internal static void Generate(string folderPath, List<HotchnerTable> tableList)
         {
             var content = GetContent(tableList);
@@ -16,34 +14,14 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             File.WriteAllText(filePath, content, new UTF8Encoding(false));
         }
 
-        static ServiceImpl()
-        {
-            // 基本设施
-            AngularFolderDictionary.Add("Bridge", "basic-equipment\\bridge\\");
-            AngularFolderDictionary.Add("Culvert", "basic-equipment\\culvert\\");
-            AngularFolderDictionary.Add("LevelCrossing", "basic-equipment\\level-crossing\\");
-            AngularFolderDictionary.Add("Marker", "basic-equipment\\marker\\");
-            AngularFolderDictionary.Add("PublicCrossingBridge", "basic-equipment\\public-crossing-bridge\\");
-            AngularFolderDictionary.Add("Tunnel", "basic-equipment\\tunnel\\");
-
-            // 其他设施
-            AngularFolderDictionary.Add("OtherDevice", "other-equipment\\other-device\\");
-
-            // 安防设施
-            AngularFolderDictionary.Add("EvacuationRoute", "security\\evacuation-route\\");
-            AngularFolderDictionary.Add("PowerComm", "security\\power-comm\\");
-            AngularFolderDictionary.Add("ProtectiveFence", "security\\protective-fence\\");
-            AngularFolderDictionary.Add("SecurityDevice", "security\\security-device\\");
-            AngularFolderDictionary.Add("VideoSurveillance", "security\\video-surveillance\\");
-        }
-
         private static string GetContent(List<HotchnerTable> tableList)
         {
+            var daoField = $"{Backend_Statistic.FieldPrefix}Dao";
             StringBuilder stringBuilder = new StringBuilder();
 
             stringBuilder.AppendLine("package " + Backend_Statistic.ServiceImplPackagePrefix + ";");
             stringBuilder.AppendLine();
-            
+
             stringBuilder.AppendLine("import com.infinite.common.entity.AdminCode;");
             stringBuilder.AppendLine($"import {Backend_Statistic.DaoPackagePrefix}.*;");
             stringBuilder.AppendLine($"import {Backend_Statistic.EntityPackagePrefix}.{Entity.StatisticInfoClass};");
@@ -56,11 +34,10 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("@Service");
             stringBuilder.AppendLine($"public class {Backend_Statistic.ServicesImplName} implements {Backend_Statistic.ServicesName} " + "{");
-            foreach (var table in tableList)
-            {
-                stringBuilder.AppendLine("    @Autowired");
-                stringBuilder.AppendLine($"    private {Dao.GetDaoClassName(table)} {GetDaoFieldName(table)};");
-            }
+
+            stringBuilder.AppendLine("    @Autowired");
+            stringBuilder.AppendLine($"    private {Backend_Statistic.DaoName} {daoField};");
+
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("    @Override");
             stringBuilder.AppendLine($"    public List<{Entity.StatisticInfoClass}> {Backend_Statistic.GetAllStatisticResult_MethodName}(int adminCode) " + "{");
@@ -68,11 +45,7 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
             stringBuilder.AppendLine($"        AdminCode code = new AdminCode();");
             stringBuilder.AppendLine($"        code.setAdminCode(adminCode);");
             stringBuilder.AppendLine($"        String queryStr = code.GetQueryStr();");
-
-            foreach (var table in tableList)
-            {
-                stringBuilder.AppendLine($"        result.add({GetDaoFieldName(table)}.{Dao.GetEachStatisticInfo_MethodName(table)}(queryStr));");
-            }
+            stringBuilder.AppendLine($"        result = {daoField}.{Backend_Statistic.GetAllStatisticResult_MethodName}(queryStr);");
 
             stringBuilder.AppendLine("        return result;");
             stringBuilder.AppendLine("    }");
@@ -84,5 +57,18 @@ namespace CodeSqlGenerate.Generate._4_Statistic.Backend
         {
             return $"{table.camelcaseMethodName}Dao";
         }
+
+
+
+        // 暂时不需要各个设备的统计信息Dao
+        //foreach (var table in tableList)
+        //{
+        //    stringBuilder.AppendLine("    @Autowired");
+        //    stringBuilder.AppendLine($"    private {Dao.GetDaoClassName(table)} {GetDaoFieldName(table)};");
+        //}
+        //foreach (var table in tableList)
+        //{
+        //    stringBuilder.AppendLine($"        result.add({GetDaoFieldName(table)}.{Dao.GetEachStatisticInfo_MethodName(table)}(queryStr));");
+        //}
     }
 }
