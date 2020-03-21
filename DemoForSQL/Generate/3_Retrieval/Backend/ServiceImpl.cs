@@ -40,11 +40,10 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             stringBuilder.AppendLine("    @Override");
             stringBuilder.AppendLine($"    public List<{Entity.RetrievalResultClass}> {Backend_Retrieval.GetRetrievalAllMethodName}({Entity.RetrievalParameterClass} parameter) " + "{");
             stringBuilder.AppendLine($"        List<{Entity.RetrievalResultClass}> result = new ArrayList<>();");
-            stringBuilder.AppendLine("        String keyword = parameter.getKeyword();");
 
             foreach (var table in tableList)
             {
-                stringBuilder.AppendLine($"        result.addAll({daoField}.{Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}(keyword));");
+                stringBuilder.AppendLine($"        result.addAll({daoField}.{Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}(parameter));");
             }
             stringBuilder.AppendLine("        return result;");
             stringBuilder.AppendLine("    }");

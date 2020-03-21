@@ -20,8 +20,8 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
 
             stringBuilder.AppendLine("package " + Backend_Retrieval.DaoPackagePrefix + ";");
             stringBuilder.AppendLine();
+            stringBuilder.AppendLine("import com.infinite.icts.entity.retrieval.RetrievalParameter;");
             stringBuilder.AppendLine($"import {Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalResultClass};");
-            stringBuilder.AppendLine("import org.apache.ibatis.annotations.Param;");
             stringBuilder.AppendLine("import org.springframework.stereotype.Repository;");
             stringBuilder.AppendLine("");
             stringBuilder.AppendLine("import java.util.List;");
@@ -32,7 +32,9 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             foreach (var table in tableList)
             {
                 stringBuilder.AppendLine("");
-                stringBuilder.AppendLine($"    List<{Entity.RetrievalResultClass}> {Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}(@Param(\"keyword\") String keyword);");
+                stringBuilder.AppendLine($"    List<{Entity.RetrievalResultClass}> " +
+                                         $"{Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}" +
+                                         $"(RetrievalParameter retrievalPara);");
             }
             stringBuilder.AppendLine("}");
             return stringBuilder.ToString();

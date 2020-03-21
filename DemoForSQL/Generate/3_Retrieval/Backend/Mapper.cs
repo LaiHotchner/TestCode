@@ -25,7 +25,10 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
             foreach (var table in tableList)
             {
                 var dbTableName = table.DbTableName;
-                outterBuilder.AppendLine($"    <select id=\"{Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}\"  resultType=\"{Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalResultClass}\">");
+                outterBuilder.AppendLine($"    <select id=\"{Backend_Retrieval.GetListMethodName_EachDao_GetRetrievalResult(table)}\"");
+                outterBuilder.AppendLine($"            parameterType=\"{Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalParameterClass}\"");
+                outterBuilder.AppendLine($"            resultType=\"{Backend_Retrieval.EntityPackagePrefix}.{Entity.RetrievalResultClass}\">");
+
                 outterBuilder.AppendLine("        SELECT id, mc as name, szx as belongedLine,");
                 outterBuilder.AppendLine("               zxlc as centerDistance, sxx as direction,");
 #warning 这里涉及到设备类型
@@ -53,7 +56,7 @@ namespace CodeSqlGenerate.Generate._3_Retrieval.Backend
                 }
             }
             builder.Remove(builder.Length - 2, 2);
-            builder.Append(")like '%${keyword}%'");
+            builder.Append(")like concat('%',#{keyword},'%')");
             return builder.ToString();
         }
     }
